@@ -50,10 +50,11 @@ $ mvn -v
 Java Path -- /usr/lib/jvm/java-11-openjdk-11.0.19.0.7-1.amzn2.0.1.x86_64
 MAVEN_HOME:/opt/maven     //You need to add this at Jenkins Job under Maven Installations
 
-Open jenkins dashboard and add this maven and jdk under installations.
-create one test job and build you can see artifacts are produced.
+Step 3 :Install maven plugin and configure jenkins for maven
 
-Step 3 :Install and configure docker host in aws ubuntu server
+open jenkins dashoboard install maven plugin and add jdk,maven installations. create a test job to verify artifacts be produced.(use my github repo to use register app)
+
+Step 4 :Install and configure docker host in aws ubuntu server
 
 $ sudo apt update && sudo apt-get update
 $ sudo apt install docker.io
@@ -72,7 +73,15 @@ $ docker stop registerapp
 $ docker rm registerapp
 $ docker run -d --name registerapp -p 8086:8080 webapp:v1
 
-Now create job in jenkins and build the job. you can artifacts are produced and copied to docker host server.
+Now you can access your application via browser <server ip>:8086/webapp
+
+Step 5: Deploy applicationon docker container using jenkins
+
+open jenkins dashboard
+create one maven project job
+include publish over ssh option to send war files to docker container.
+run the job
+now you can check your docker server. you can see war files are there.
 
 
 
